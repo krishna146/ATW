@@ -1,4 +1,4 @@
-package com.apnatuitionwale.atw
+package com.apnatuitionwale.atw.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
