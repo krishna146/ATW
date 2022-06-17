@@ -47,7 +47,6 @@
         android:minHeight="48dp"
         android:hint="DOB"
         android:textColorHint="@color/black"
-
         app:layout_constraintEnd_toEndOf="@+id/editTextNumber"
         app:layout_constraintStart_toStartOf="@+id/editTextNumber"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
@@ -88,7 +87,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
+        android:text="State"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
