@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import com.apnatuitionwale.atw.R
 import com.apnatuitionwale.atw.databinding.FragmentLoginBinding
 import com.apnatuitionwale.atw.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private var _binding : FragmentMainBinding? = null

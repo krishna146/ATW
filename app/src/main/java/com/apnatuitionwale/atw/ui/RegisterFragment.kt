@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.apnatuitionwale.atw.R
 import com.apnatuitionwale.atw.databinding.FragmentOtpVerifyBinding
 import com.apnatuitionwale.atw.databinding.FragmentRegisterBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private var _binding : FragmentRegisterBinding? = null

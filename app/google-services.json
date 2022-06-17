@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "604113888546",
+    "project_id": "apna-tuition-wala",
+    "storage_bucket": "apna-tuition-wala.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604113888546:android:f31f56ea912e085629317b",
+        "android_client_info": {
+          "package_name": "com.apnatuitionwale.atw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604113888546-20fgvebb7ij1nvtk3rr2fk3d785sgpnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm55M0SKHnJFE7aYFoDsB9qxsu-8ZBdAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604113888546-20fgvebb7ij1nvtk3rr2fk3d785sgpnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

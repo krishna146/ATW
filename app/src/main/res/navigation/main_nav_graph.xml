@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_otpVerifyFragment_to_mainFragment2"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="mobileNumber"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.apnatuitionwale.atw.R
 import com.apnatuitionwale.atw.databinding.FragmentSplashBinding
+import com.google.firebase.auth.FirebaseAuth
 
 
 class SplashFragment : Fragment() {
@@ -31,6 +32,10 @@ class SplashFragment : Fragment() {
         Handler(Looper.myLooper()!!).postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
         }, 3000)
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
     override fun onDestroyView() {
