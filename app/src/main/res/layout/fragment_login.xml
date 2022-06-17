@@ -1,29 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ui.LoginFragment">
-
+      <ImageView
+          android:id="@+id/image"
+          android:layout_width="match_parent"
+          android:layout_height="300dp"
+          android:src="@drawable/logo"
+          android:contentDescription="@string/mobile"
+          />
+     <TextView
+         android:id="@+id/text"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/mobile"
+         android:layout_below="@+id/image"
+         android:textSize="28sp"
+         android:textStyle="bold"
+         android:textColor="#B50808"
+         android:layout_marginTop="30dp"
+         android:layout_marginStart="40dp"
+         />
 
     <EditText
-        android:id="@+id/etPhone"
+        android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mobile Number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnLogin"
+        android:layout_below="@+id/text"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:autofillHints="phone"/>
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPhone" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@+id/edit"
+        android:layout_marginTop="30dp"
+        android:text="@string/verify_No"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:backgroundTint="#0687CD"/>
+        </RelativeLayout>
