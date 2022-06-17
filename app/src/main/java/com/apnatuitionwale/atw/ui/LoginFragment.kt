@@ -46,7 +46,8 @@ class LoginFragment : Fragment() {
                     is UiState.Failure -> Log.d(TAG, "Failure")
                     is UiState.Loading -> Log.d(TAG, "Loading")
                     is UiState.Success -> {
-                        val action = LoginFragmentDirections.actionLoginFragmentToOtpVerifyFragment(state.data)
+                        val action =
+                            LoginFragmentDirections.actionLoginFragmentToOtpVerifyFragment(state.data)
                         findNavController().navigate(action)
                     }
                 }

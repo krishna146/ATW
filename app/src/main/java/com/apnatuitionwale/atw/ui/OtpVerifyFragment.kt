@@ -42,12 +42,13 @@ class OtpVerifyFragment : Fragment() {
                 editTextNumber2.text.toString() + editTextNumber3.text.toString() + editTextNumber4.text.toString() + editTextNumber5.text.toString() + editTextNumber6.text.toString() + editTextNumber7.text.toString()
             }
             viewModel.verifyOtp(systemOtp, userEnteredOtp)
-            viewModel.otpVerify.observe(viewLifecycleOwner){state ->
-                when(state){
+            viewModel.otpVerify.observe(viewLifecycleOwner) { state ->
+                when (state) {
                     is UiState.Failure -> Log.d(TAG, "failde")
                     is UiState.Loading -> Log.d(TAG, "Loading")
                     is UiState.Success -> {
-                        val action = OtpVerifyFragmentDirections.actionOtpVerifyFragmentToMainFragment2()
+                        val action =
+                            OtpVerifyFragmentDirections.actionOtpVerifyFragmentToMainFragment2()
                         findNavController().navigate(action)
                     }
                 }
@@ -56,8 +57,6 @@ class OtpVerifyFragment : Fragment() {
 
         }
     }
-
-
 
 
     override fun onDestroyView() {
