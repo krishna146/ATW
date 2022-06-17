@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.apnatuitionwale.atw.R
 
 import com.apnatuitionwale.atw.databinding.FragmentMainBinding
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,8 +26,14 @@ class MainFragment : Fragment() {
     ): View? {
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-        //return binding.root
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnLogout.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+        }
     }
 
     override fun onDestroyView() {

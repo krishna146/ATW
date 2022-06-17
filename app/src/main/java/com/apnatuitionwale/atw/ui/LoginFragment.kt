@@ -24,8 +24,9 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding: FragmentLoginBinding
         get() = _binding!!
-    private lateinit var systemOtp: String
     private val viewModel by viewModels<AuthViewModel>()
+    @Inject
+    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,12 +47,19 @@ class LoginFragment : Fragment() {
                     is UiState.Failure -> Log.d(TAG, "Failure")
                     is UiState.Loading -> Log.d(TAG, "Loading")
                     is UiState.Success -> {
-                        val action =
-                            LoginFragmentDirections.actionLoginFragmentToOtpVerifyFragment(state.data)
+                        val action = LoginFragmentDirections.actionLoginFragmentToOtpVerifyFragment(state.data)
                         findNavController().navigate(action)
                     }
                 }
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
         }
     }
 
