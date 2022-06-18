@@ -42,14 +42,22 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             val phoneNumber = "+91" + binding.etPhone.text.toString().trim()
             viewModel.getOtp(phoneNumber, requireActivity())
-            viewModel.login.observe(viewLifecycleOwner) { state ->
-                when (state) {
-                    is UiState.Failure -> Log.d(TAG, "Failure")
-                    is UiState.Loading -> Log.d(TAG, "Loading")
-                    is UiState.Success -> {
-                        val action = LoginFragmentDirections.actionLoginFragmentToOtpVerifyFragment(state.data)
-                        findNavController().navigate(action)
-                    }
+            observer()
+
+        }
+    }
+
+    private fun observer() {
+        viewModel.login.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Failure -> Log.d(TAG, "Failure")
+                is UiState.Loading -> {
+                    binding.btnLogin.text = ""
+                    binding.loginProgressBar.visibility = View.VISIBLE
+                }
+                is UiState.Success -> {
+                    val action = LoginFragmentDirections.actionLoginFragmentToOtpVerifyFragment(state.data)
+                    findNavController().navigate(action)
                 }
             }
         }
