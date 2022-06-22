@@ -1,73 +1,19 @@
 package com.apnatuitionwale.atw.repository
 
-import android.util.Log
 import androidx.fragment.app.FragmentActivity
-import androidx.navigation.fragment.findNavController
-import com.apnatuitionwale.atw.R
-import com.apnatuitionwale.atw.ui.LoginFragmentDirections
-import com.apnatuitionwale.atw.utils.Constants
+import com.apnatuitionwale.atw.models.StudentData
 import com.apnatuitionwale.atw.utils.UiState
-import com.google.firebase.FirebaseException
-import com.google.firebase.auth.*
-import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
-class AuthRepository @Inject constructor(val auth: FirebaseAuth) {
+interface AuthRepository {
     fun getOtp(
         phoneNumber: String,
         fragmentActivity: FragmentActivity,
         result: (UiState<String>) -> Unit
-    ) {
-        val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-
-            }
-
-            override fun onVerificationFailed(e: FirebaseException) {
-                result(UiState.Failure(e.toString()))
-
-            }
-
-            override fun onCodeSent(
-                verificationId: String,
-                token: PhoneAuthProvider.ForceResendingToken
-            ) {
-                result(UiState.Success(verificationId))
-            }
-        }
-        val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(fragmentActivity)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
-    }
-
+    )
     fun verifyOtp(
         systemOtp: String,
         userEnteredOtp: String,
-        result: (UiState<String>) -> Unit
-    ) {
-        val credential = PhoneAuthProvider.getCredential(systemOtp, userEnteredOtp)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(Constants.TAG, "signInWithCredential:success")
-                    result(UiState.Success("success"))
-
-                    val user = task.result?.user
-                } else {
-                    // Sign in failed, display a message and update the UI
-                    Log.w(Constants.TAG, "signInWithCredential:failure", task.exception)
-                    result(UiState.Failure("failure"))
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
-                    }
-                    // Update UI
-                }
-            }
-    }
+        result: (UiState<Boolean>) -> Unit
+    )
+    fun registerUser(sData: StudentData, result: (UiState<String>) -> Unit)
 }

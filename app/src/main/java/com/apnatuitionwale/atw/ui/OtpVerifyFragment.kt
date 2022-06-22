@@ -6,15 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.apnatuitionwale.atw.databinding.FragmentOtpVerifyBinding
 import com.apnatuitionwale.atw.utils.Constants.TAG
 import com.apnatuitionwale.atw.utils.UiState
+import com.apnatuitionwale.atw.utils.toast
 import com.apnatuitionwale.atw.viewmodel.AuthViewModel
 import com.google.firebase.auth.*
 import dagger.hilt.android.AndroidEntryPoint
+import io.grpc.InternalChannelz.id
 
 @AndroidEntryPoint
 class OtpVerifyFragment : Fragment() {
@@ -44,12 +47,24 @@ class OtpVerifyFragment : Fragment() {
             viewModel.verifyOtp(systemOtp, userEnteredOtp)
             viewModel.otpVerify.observe(viewLifecycleOwner) { state ->
                 when (state) {
-                    is UiState.Failure -> Log.d(TAG, "failde")
-                    is UiState.Loading -> Log.d(TAG, "Loading")
+                    is UiState.Failure -> {
+                        binding.progressBar.isVisible = false
+                        toast(state.error.toString())
+                    }
+                    is UiState.Loading -> {
+
+                        binding.progressBar.isVisible = true
+                    }
                     is UiState.Success -> {
-                        val action =
-                            OtpVerifyFragmentDirections.actionOtpVerifyFragmentToMainFragment2()
-                        findNavController().navigate(action)
+                        if (state.data) {
+                            val action =
+                                OtpVerifyFragmentDirections.actionOtpVerifyFragmentToRegisterFragment()
+                            findNavController().navigate(action)
+                        } else {
+                            val action =
+                                OtpVerifyFragmentDirections.actionOtpVerifyFragmentToMainFragment2()
+                            findNavController().navigate(action)
+                        }
                     }
                 }
             }

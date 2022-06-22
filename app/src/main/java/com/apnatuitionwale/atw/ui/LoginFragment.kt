@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.apnatuitionwale.atw.databinding.FragmentLoginBinding
 import com.apnatuitionwale.atw.utils.Constants.TAG
 import com.apnatuitionwale.atw.utils.UiState
+import com.apnatuitionwale.atw.utils.toast
 import com.apnatuitionwale.atw.viewmodel.AuthViewModel
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
@@ -25,6 +26,7 @@ class LoginFragment : Fragment() {
     private val binding: FragmentLoginBinding
         get() = _binding!!
     private val viewModel by viewModels<AuthViewModel>()
+
     @Inject
     lateinit var auth: FirebaseAuth
 
@@ -50,13 +52,19 @@ class LoginFragment : Fragment() {
     private fun observer() {
         viewModel.login.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is UiState.Failure -> Log.d(TAG, "Failure")
+                is UiState.Failure -> {
+                    toast(state.error!!)
+                    binding.loginProgressBar.visibility = View.INVISIBLE
+                    binding.btnLogin.text = "Verify Mobile NO"
+                }
+
                 is UiState.Loading -> {
                     binding.btnLogin.text = ""
                     binding.loginProgressBar.visibility = View.VISIBLE
                 }
                 is UiState.Success -> {
-                    val action = LoginFragmentDirections.actionLoginFragmentToOtpVerifyFragment(state.data)
+                    val action =
+                        LoginFragmentDirections.actionLoginFragmentToOtpVerifyFragment(state.data)
                     findNavController().navigate(action)
                 }
             }
