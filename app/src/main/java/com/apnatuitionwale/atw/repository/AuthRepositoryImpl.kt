@@ -9,6 +9,7 @@ import com.apnatuitionwale.atw.ui.LoginFragmentDirections
 import com.apnatuitionwale.atw.utils.Constants
 import com.apnatuitionwale.atw.utils.UiState
 import com.google.firebase.FirebaseException
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.TimeUnit
@@ -30,9 +31,7 @@ class AuthRepositoryImpl @Inject constructor(
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
-                result(UiState.Failure(e.toString()))
-
-
+                result(UiState.Failure(e.localizedMessage))
             }
 
             override fun onCodeSent(

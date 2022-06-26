@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import com.apnatuitionwale.atw.R
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.apnatuitionwale.atw.databinding.FragmentLoginBinding
@@ -42,11 +44,29 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnLogin.setOnClickListener {
-            val phoneNumber = "+91" + binding.etPhone.text.toString().trim()
-            viewModel.getOtp(phoneNumber, requireActivity())
-            observer()
+            if (validation()) {
+                val phoneNumber = "+91" + binding.etPhone.text.toString().trim()
+                viewModel.getOtp(phoneNumber, requireActivity())
+                observer()
+            }
 
         }
+        binding.etPhone.doAfterTextChanged {
+            binding.textFieldPhone.error = null
+        }
+    }
+
+    private fun validation(): Boolean {
+        val phone = binding.etPhone.text.toString()
+        if (phone.isEmpty()) {
+            binding.textFieldPhone.error = "Enter Mobile Number"
+            return false
+        }
+        if (phone.length < 10 || phone.length > 10) {
+            binding.textFieldPhone.error = getString(R.string.error)
+            return false
+        }
+        return true
     }
 
     private fun observer() {
@@ -54,13 +74,11 @@ class LoginFragment : Fragment() {
             when (state) {
                 is UiState.Failure -> {
                     toast(state.error!!)
-                    binding.loginProgressBar.visibility = View.INVISIBLE
-                    binding.btnLogin.text = "Verify Mobile NO"
+                    binding.loginProgressBar.isVisible = false
                 }
 
                 is UiState.Loading -> {
-                    binding.btnLogin.text = ""
-                    binding.loginProgressBar.visibility = View.VISIBLE
+                    binding.loginProgressBar.isVisible = true
                 }
                 is UiState.Success -> {
                     val action =
