@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">ATW</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="mobile">Enter mobile no to continue</string>
     <string name="verify_No">Verify Mobile No</string>
     <string name="error">Invalid Phone Number</string>
+    <string name="otp_received">Didn\'t Recieve Otp ? <font color="#000000">"<b>Resend</b></font></string>
+
 </resources>

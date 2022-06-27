@@ -39,11 +39,10 @@ class OtpVerifyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        systemOtp = args.mobileNumber
-        binding.button2.setOnClickListener {
-            val userEnteredOtp = with(binding) {
-                editTextNumber2.text.toString() + editTextNumber3.text.toString() + editTextNumber4.text.toString() + editTextNumber5.text.toString() + editTextNumber6.text.toString() + editTextNumber7.text.toString()
-            }
+        systemOtp = args.otp
+        binding.txtPhone.text = args.mobileNumber
+        binding.btnVerify.setOnClickListener {
+            val userEnteredOtp = binding.etOtp.text.toString()
             viewModel.verifyOtp(systemOtp, userEnteredOtp)
             viewModel.otpVerify.observe(viewLifecycleOwner) { state ->
                 when (state) {
@@ -69,6 +68,16 @@ class OtpVerifyFragment : Fragment() {
                 }
             }
 
+
+        }
+        binding.editPhoneNumber.setOnClickListener {
+            val action =
+                OtpVerifyFragmentDirections.actionOtpVerifyFragmentToLoginFragment()
+            findNavController().navigate(action)
+        }
+
+
+        binding.textResend.setOnClickListener {
 
         }
     }

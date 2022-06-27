@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/white"
     tools:context=".ui.OtpVerifyFragment">
 
 
@@ -12,133 +12,68 @@
         android:id="@+id/imageView2"
         android:layout_width="134dp"
         android:layout_height="157dp"
-        android:layout_marginTop="105dp"
-        android:layout_marginBottom="469dp"
+        android:layout_marginTop="36dp"
         android:contentDescription="verification image"
         android:src="@drawable/otp_verification"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="289dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="116dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
-
-        <EditText
-            android:id="@+id/editTextNumber2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:inputType="number"
-            android:maxLength="1"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:textSize="20sp"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-        <EditText
-            android:id="@+id/editTextNumber3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:inputType="number"
-            android:maxLength="1"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:textSize="20sp"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-        <EditText
-            android:id="@+id/editTextNumber4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:inputType="number"
-            android:maxLength="1"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:textSize="20sp"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-        <EditText
-            android:id="@+id/editTextNumber5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:inputType="number"
-            android:maxLength="1"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:textSize="20sp"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-
-        <EditText
-            android:id="@+id/editTextNumber6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:inputType="number"
-            android:maxLength="1"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:textSize="20sp"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-        <EditText
-            android:id="@+id/editTextNumber7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:inputType="number"
-            android:maxLength="1"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ENTER OTP"
+        android:layout_marginTop="16dp"
+        android:text="We have sent 6 digit otp to"
         android:textColor="#272323"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <Button
-        android:id="@+id/button2"
+    <LinearLayout
+        android:id="@+id/txtNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#1976D2"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+        <TextView
+            android:id="@+id/txtPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="+91 8539830250" />
+
+        <ImageView
+            android:id="@+id/editPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_edit" />
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btnVerify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/black"
         android:text="verify otp"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.662" />
+        app:layout_constraintEnd_toEndOf="@+id/etOtp"
+        app:layout_constraintStart_toStartOf="@+id/etOtp"
+        app:layout_constraintTop_toBottomOf="@+id/textResend" />
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progress_bar"
@@ -149,9 +84,39 @@
         android:indeterminate="true"
         android:visibility="invisible"
         app:SpinKit_Color="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/btnVerify" />
+
+    <com.chaos.view.PinView
+        android:id="@+id/etOtp"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:cursorVisible="true"
+        android:inputType="number"
+        android:itemBackground="#ffffff"
+        app:itemCount="6"
+        app:itemHeight="50dp"
+        app:itemRadius="10dp"
+        app:itemWidth="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumber" />
+
+    <TextView
+        android:id="@+id/textResend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/otp_received"
+        app:layout_constraintEnd_toEndOf="@+id/etOtp"
+        app:layout_constraintStart_toStartOf="@+id/etOtp"
+        app:layout_constraintTop_toBottomOf="@+id/etOtp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

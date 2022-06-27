@@ -36,6 +36,9 @@ class SplashFragment : Fragment() {
         }, 1500)
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

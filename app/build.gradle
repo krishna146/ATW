@@ -69,6 +69,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     //loader
     implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+    //pin view for entering otp
+    implementation 'io.github.chaosleung:pinview:1.4.4'
 
 
 
