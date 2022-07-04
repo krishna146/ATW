@@ -93,9 +93,19 @@
         android:id="@+id/mainFragment"
         android:name="com.apnatuitionwale.atw.ui.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.apnatuitionwale.atw.ui.CourseFragment"
+        android:label="fragment_course"
+        tools:layout="@layout/fragment_course" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.apnatuitionwale.atw.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_mainFragment_to_loginFragment"
+            android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />

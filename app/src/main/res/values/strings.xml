@@ -4,5 +4,7 @@
     <string name="verify_No">Verify Mobile No</string>
     <string name="error">Invalid Phone Number</string>
     <string name="otp_received">Didn\'t Recieve Otp ? <font color="#000000">"<b>Resend</b></font></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

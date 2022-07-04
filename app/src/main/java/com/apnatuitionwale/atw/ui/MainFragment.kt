@@ -1,16 +1,13 @@
 package com.apnatuitionwale.atw.ui
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-
-import com.apnatuitionwale.atw.R
-
+import android.widget.MediaController
 import com.apnatuitionwale.atw.databinding.FragmentMainBinding
-import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,9 +29,19 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnLogout.setOnClickListener{
-            FirebaseAuth.getInstance().signOut()
-            findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+        binding.btnPlay.setOnClickListener {
+            val url =
+                "https://firebasestorage.googleapis.com/v0/b/apna-tuition-wala.appspot.com/o/10th%2FMathematics%2F1NumberSystem%2FVID20220703213129%5B1%5D.mp4?alt=media&token=d347f376-265f-4fd1-bc9c-119f7290184b"
+            val uri = Uri.parse(url)
+            binding.videoView3.setVideoURI(uri)
+            val mediaController = MediaController(requireContext())
+            mediaController.setAnchorView(binding.videoView3)
+            mediaController.setMediaPlayer(binding.videoView3)
+            binding.videoView3.setMediaController(mediaController)
+            binding.videoView3.start()
+
+
+
         }
     }
 
