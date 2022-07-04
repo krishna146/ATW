@@ -29,20 +29,16 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnPlay.setOnClickListener {
-            val url =
-                "https://firebasestorage.googleapis.com/v0/b/apna-tuition-wala.appspot.com/o/10th%2FMathematics%2F1NumberSystem%2FVID20220703213129%5B1%5D.mp4?alt=media&token=d347f376-265f-4fd1-bc9c-119f7290184b"
-            val uri = Uri.parse(url)
-            binding.videoView3.setVideoURI(uri)
-            val mediaController = MediaController(requireContext())
-            mediaController.setAnchorView(binding.videoView3)
-            mediaController.setMediaPlayer(binding.videoView3)
-            binding.videoView3.setMediaController(mediaController)
-            binding.videoView3.start()
+        bindHandlers()
+        bindObservers()
+    }
 
+    private fun bindObservers() {
+        TODO("Not yet implemented")
+    }
 
-
-        }
+    private fun bindHandlers() {
+        TODO("Not yet implemented")
     }
 
     override fun onDestroyView() {

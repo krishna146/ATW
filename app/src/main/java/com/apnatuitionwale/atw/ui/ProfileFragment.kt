@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.apnatuitionwale.atw.R
 import com.apnatuitionwale.atw.databinding.FragmentMainBinding
@@ -16,6 +17,13 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding: FragmentProfileBinding
         get() = _binding!!
+    private val galleryContract = registerForActivityResult(GalleryContract()){
+        it?.let {
+            binding.studentProfilePic.setImageURI(it)
+        }?:run{
+            Toast.makeText(requireContext(), "No Image Selected", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +40,9 @@ class ProfileFragment : Fragment() {
             FirebaseAuth.getInstance().signOut()
             findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
 
+        }
+        binding.etImageIcon.setOnClickListener {
+            galleryContract.launch(null)
         }
     }
 
