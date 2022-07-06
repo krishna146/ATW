@@ -5,37 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.apnatuitionwale.atw.databinding.FragmentMainBinding
-import com.google.android.exoplayer2.Player
-import dagger.hilt.android.AndroidEntryPoint
+import com.apnatuitionwale.atw.databinding.FragmentPlayerBinding
 
 
-@AndroidEntryPoint
-class MainFragment : Fragment(), Player.Listener {
+class PlayerFragment : Fragment() {
 
-    private var _binding: FragmentMainBinding? = null
-    private val binding: FragmentMainBinding
+    private var _binding: FragmentPlayerBinding? = null
+    private val binding: FragmentPlayerBinding
         get() = _binding!!
 
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
+        _binding = FragmentPlayerBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
     }
-
-
-
 
 
 }
